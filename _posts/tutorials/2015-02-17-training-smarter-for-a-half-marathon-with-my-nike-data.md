@@ -15,7 +15,7 @@ tags:
   - wearables
 ---
 <figure>
-	<img src="/images/p1.png" alt="image">
+	<img src="{{site.url}}/images/p1.png" alt="image">
 </figure>	
 I&#8217;ve started to train for a half marathon, just finishing week 5 of the 12 week Nike+ running coach half marathon program. I just want to know- how quickly can I expect to improve my running pace?  I&#8217;m NOT a runner, and I&#8217;m very slow. By &#8220;not a runner&#8221;, I mean I had never run more than 4 miles at once before this program and not a single mile at all in the last two years.  By &#8220;slow&#8221;, I mean that I am a 5&#8217;2&#8243; girl who has a hard time keeping up with people I walk next to.  To clarify further, because I recently read a comment somewhere on the interwebs about someone who was &#8220;slow&#8221; with a &#8220;sluggish pace&#8221; of 9&#8217;45&#8221; (HA, that&#8217;s my fastest mile!), I&#8217;ll just let you also know that my all time average pace with Nike+ Running app so far is 13&#8217;12&#8221;.
 
@@ -31,14 +31,14 @@ So, I decided that the only way to get a good idea of what I can expect is to lo
 
 I use the Nike+ Running app every time I run, which stores overall run stats like date, duration, distance, total steps, etc and also run details like gps data and an array of cumulative distance values at every 10 seconds (which would show you how your pace varies over a run).  At the moment I only care about the overall stats for my last 25 runs, so I&#8217;ll show you how to get these data and save the rest for another post.
 
-You can get an access token to pull your own data using the Nike+ api here: <http://dev.nike.com/console>.  Awesome!  If you use Nike+ Running, and you can make plots using R, I&#8217;ll show you my plots and you can make your own by putting your access token as a single line in a file called &#8220;accessToken.txt&#8221; and running my code.  Also, I borrowed some initial starting code from this github repo <https://github.com/synergenz/RunR>, but I think Nike+ may have changed a bit because I had to change a lot to get what I wanted to do working.
+You can get an access token to pull your own data using the Nike+ api here: <http://dev.nike.com/console>.  Awesome!  If you use Nike+ Running, and you can make plots using R, I&#8217;ll show you my plots and you can make your own by putting your access token as a single line in a file called &#8220;accessToken.txt&#8221; and running my code.  Also, I borrowed some initial starting code from this github repo <https://github.com/synergenz/RunR>, but I think Nike+ may have changed a bit because I had to change a lot to get what I wanted to do working. My modified fork of is here at <https://github.com/mtpatter/RunR>.
 
 Here&#8217;s what my training runs look like.  Look how slow I am!!  Plotting xkcd style to emphasize both that I am not a runner and this is not real scientific analysis.
 
 &nbsp;
 
 <figure>
-	<img src="/images/runs2015-02-16.png" alt="image">
+	<img src="{{site.url}}/images/runs2015-02-16.png" alt="image">
 	<figcaption>Top left: Running pace in minutes/mile over time the last 5 weeks, shown for my easy &#8220;long&#8221; runs and regular runs. Top right: Running pace vs run distance, with a guesstimate for 13.1 miles based on current training marked as a red asterisk. Bottom left: Running pace vs step cadence, linear fit in blue and non-linear in red. Bottom right: Running pace vs total cumulative training mileage, linear fit in blue and non-linear in red and guesstimated goal for the end of next week marked by a red asterisk.</figcaption>
 </figure>
 

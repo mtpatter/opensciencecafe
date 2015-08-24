@@ -59,14 +59,14 @@ methods(fortify)
 countiesPlot &lt; - ggplot(county_borders) + geom_polygon(aes(long,lat,group=group),fill=NA,col='black') + coord_equal()  plot(countiesPlot) </pre>
 
 <figure>
-	<img src="/images/countiesPlot.png" alt="image">
+	<img src="{{site.url}}/images/countiesPlot.png" alt="image">
 </figure>
 
 <pre class="lang:r decode:true ">## This plots an outline of states.
 statesPlot &lt; - ggplot(state_borders) + geom_polygon(aes(long,lat,group=group),fill=NA,col='black') + coord_equal() plot(statesPlot)</pre>
 
 <figure>
-	<img src="/images/statesPlot.png" alt="image">
+	<img src="{{site.url}}/images/statesPlot.png" alt="image">
 </figure>
 
 
@@ -74,7 +74,7 @@ statesPlot &lt; - ggplot(state_borders) + geom_polygon(aes(long,lat,group=group)
 pointsPlot &lt; - ggplot(as(points,"data.frame")) + geom_point(aes(lon,lat,colour=population),alpha=0.5) + coord_equal() + scale_colour_gradient2(trans="log",guide=FALSE) plot(pointsPlot)</pre>
 
 <figure>
-	<img src="/images/pointsPlot.png" alt="image">
+	<img src="{{site.url}}/images/pointsPlot.png" alt="image">
 </figure>
 
 
@@ -82,7 +82,7 @@ pointsPlot &lt; - ggplot(as(points,"data.frame")) + geom_point(aes(lon,lat,colou
 statesPointsPlot &lt; - statesPlot + geom_point(data = as(points,'data.frame'),aes(lon,lat,colour=population),alpha=0.5) + scale_colour_gradient2(trans="log",guide=FALSE) plot(statesPointsPlot) </pre>
 
 <figure>
-	<img src="/images/statesPointsPlot.jpg" alt="image">
+	<img src="{{site.url}}/images/statesPointsPlot.jpg" alt="image">
 </figure>
 
 

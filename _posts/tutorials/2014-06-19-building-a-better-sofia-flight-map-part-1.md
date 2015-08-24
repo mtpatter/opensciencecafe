@@ -26,7 +26,7 @@ The [Stratospheric Observatory for Infrared Astronomy][1] (SOFIA) is a one of a 
 A given SOFIA flight is composed of a number of flight legs chosen for two main reasons: to observe some particular set of targets for the instrument on the telescope at the time, and to make sure we can take off and land at places that can support us (and especially [our cryogenic instruments][5]). For various logistical reasons the latter means that 90% of the time we take off and land from our home base in Palmdale, CA, so the flights tend to be (strange) polygons.
 
 <figure>
-    	<img src="/images/OC2F_03.png" alt="image">
+    	<img src="{{site.url}}/images/OC2F_03.png" alt="image">
 	<figcaption>Typical flight plan for a SOFIA flight, showing special use and restricted airspaces.</figcaption>
 </figure>
 
@@ -37,7 +37,7 @@ If you don&#8217;t work every day in some field related to aircraft operations,
 SOFIA is a plane, and planes must file flight plans. When we&#8217;re in the air, anyone who&#8217;s interested can look up [SOFIA&#8217;s tail number, NASA747][7], and see where we&#8217;re headed based off of the most recently filed flight plan for that evening. Those maps are great! They solve most of the problems with the figure above; land vs. water is clear and consistent, and everything is even presented in a nice Google Maps-esque format of click-and-drag and scroll-to-zoom style. Could it be that there wasn&#8217;t anything left for me to improve?
 
 <figure>
-    	<img src="/images/flight-aware-screenshot.png" alt="image">
+    	<img src="{{site.url}}/images/flight-aware-screenshot.png" alt="image">
 	<figcaption>FlightAware tracking cut off towards the end of this flight, and tracking was unreliable early on as visible from the S-turns.</figcaption>
 </figured>
 

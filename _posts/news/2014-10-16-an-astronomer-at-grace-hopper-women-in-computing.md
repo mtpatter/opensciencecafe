@@ -15,7 +15,7 @@ tags:
 Last week, I traveled to Phoenix (along with 8,000 other women and a few men), supported by a generous scholarship sponsored by Target, to attend the <a title="Grace Hopper Celebration" href="http://gracehopper.org/" target="_blank">Grace Hopper Celebration</a> of women in computing, put on by the <a href="http://anitaborg.org/" target="_blank">Anita Borg Institute</a>. This was my first time in attendance, and as someone moving away from astronomy more towards the computing field I was unsure of what to expect.
 
 <figure>
-	<img src="/images/ghc.jpg" alt="image">
+	<img src="{{site.url}}/images/ghc.jpg" alt="image">
 </figure>
 To clarify, I earned a PhD in Astronomy in 2013, realized I did not want to spend the rest of my life studying the metallicity of gas in star forming regions in galaxy outer disks, and looked towards applying my scientific background to areas of data science that have a more obvious direct impact on people.  I also love to program.  I&#8217;m currently in the Laboratory for Advanced Computing in the Center for Data Intensive Science under UChicago&#8217;s Department of Medicine.  So I went to GHC as an astronomer turned computational data science researcher doing geospatial health informatics analysis and looking to expose myself to a diverse community of researchers and women involved in computing in all areas.
 
