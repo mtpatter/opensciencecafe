@@ -1,0 +1,54 @@
+title: Open Science Café
+locale: en_US
+description: >
+  Notes, news, and code snippets on 
+  open data science
+logo: osc-round-logo.png
+search: true
+#url: http://opensciencecafe.org
+url: http://mtpatter.github.io/opensciencecafe
+
+
+# Jekyll configuration
+
+permalink:   /:categories/:title/
+markdown:    kramdown
+highlighter: pygments
+sass:
+  sass_dir: _sass
+  style: compressed
+gems:
+  - jekyll-sitemap
+
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..2
+  use_coderay: false
+
+include: [".htaccess"]
+exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md", "vendor"]
+
+# Site owner
+owner:
+  name: OpenScienceCafe
+  avatar: osc-round-logo.png
+  email:
+  disqus-shortname:
+  twitter: OpenScienceCafe
+  facebook: #username
+  github: mtpatter/opensciencecafe
+  stackexchange: #http://stackoverflow.com/users/123456/username
+  linkedin: #username
+  instagram: #username
+  flickr: #username
+  tumblr: #username
+  google:
+    plus: #
+    analytics:
+    verify:
+    ad-client:
+    ad-slot: 
+  bing-verify:
+

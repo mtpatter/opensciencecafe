@@ -1,0 +1,21 @@
+---
+title: "It's Hard to Sell Statistics"
+author: jeff_coughlin
+layout: post
+permalink: /2015/07/its-hard-to-sell-statistics/
+categories:
+  - news
+---
+I recently held a press conference with a colleague for NASA&#8217;s Kepler mission. In it we announced two items, with my colleague announcing (1) and myself (2):
+
+(1) The confirmation of a planet 60% bigger than Earth orbiting a Sun-like star at 385 days, putting it in the habitable zone and giving it better than even chance of being rocky. You&#8217;ve likely heard it&#8217;s name, Kepler-452b. It&#8217;s the first potentially rocky planet in the habitable zone of a Sun-like star.
+
+(2) The latest Kepler planet candidate catalog, which increased the number of candidates by over 500, bringing us to a total of 4,696. Of these new candidates, 12 were less than twice the size of Earth and in their stars&#8217; habitable zone, with 9 being around stars similar-ish to our Sun in temperature. This is great preliminary data that Earth-like planets around Sun-like stars are quite common.
+
+I felt very fortunate to get my 15 minutes of fame, being able to communicate these results to the press and public, and absolutely have to note that I was but a minor part of a large team effort. It was interesting to notice though that the main focus of nearly every headline and news article was item (1), and that, if even mentioned, (2) was as a quick addendum. Now, as a scientist and Astronomer, I have to say I&#8217;m personally more excited by (2). I admit the new candidates are just that, **candidates**, and maybe as much as 20% of them could not pan out to be real planets, and their estimated size and other parameters could shift around. However, that still leaves a lot of new potentially rocky planets around Sun-like stars. Recent studies say planets similar to Earth in size and insolation flux (amount of energy received from the host star) occur around ~25% of stars, and possibly higher, based primarily on observations of cooler, lower-mass stars. The actual hard statistical work hasn&#8217;t been done yet on this new sample, but based on these new candidates, it appears at first glance this number will hold for Sun-like stars as well. Tens of billions in our Milky Way. *Earth-Sized Planets in HZ of Sun-Like Stars are Common in Galaxy* is the headline I would expect &#8212; as a scientist.
+
+Don&#8217;t get me wrong, I like Kepler-452b. It&#8217;s great to get confirmed planets with follow-up ground-based observations because they improve our statistics. And this one is certainly the closest Earth-sized planet we have in the HZ of a Sun-like star. But I have a hard time getting genuinely excited for it alone. It&#8217;s not guaranteed to be rocky like Earth, but only has a ~50% chance. It&#8217;s 1,400 light years away, so it&#8217;s so dim as seen from Earth, and just not feasible to get any follow-up that would reveal its mass, atmosphere, or composition. If this was around Alpha Centauri or Tau Ceti, and within 10-20% of Earth&#8217;s size, it would really excite me, but as is, \*shrug\*.
+
+The press, and thus assumedly the public, loves it though. They want individual planets with names, artistic images, and a story. A poster child. <span style="line-height: 1.5">It&#8217;s hard to sell statistics. It&#8217;s hard to sell big data. </span>
+
+<span style="line-height: 1.5">We&#8217;re going to have to find a way though by the end of the Kepler mission, whose main goal is to determine the frequency of Earth-like (in radius and flux) planets in the galaxy. (That is the main mission goal by the way, not finding an individual Earth-like planet.) We have a preliminary number, and will have a final one by the end. A number based on big data with scary error bars. I</span> just hope we find a way to pitch it, else I fear the whole point of this mission may be lost on the general public. And if the public doesn&#8217;t get the big picture, that by finding out Earth-like planets are common it&#8217;s therefore absolutely worth it to invest in finding them around a few nearby stars, then the next generation of planet-finding may be stalled. Not to mention the fun of knowing that the odds us being alone in the galaxy are plummeting rapidly.
