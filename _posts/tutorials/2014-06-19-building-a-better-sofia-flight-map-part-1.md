@@ -45,7 +45,8 @@ Well, that looks weird. SOFIA has a long range (about 10 hrs of flight time), an
 
 First step was to acquire something I could actually plot myself, so I went searching on the various flight tracking websites. Thankfully, FlightAware has both an API and an easy, direct download link of a [KML][8] file of each flight in its system. I was able to hack together enough XML knowledge to be able to parse that file, which wasn&#8217;t that bad once the basics are down. Python is my language du jour, so that actually takes care of most of the hard stuff for you by using the various libraries; the hardest part was figuring out how to navigate the namespaces properly.
 
-<pre class="lang:python decode:true" title="prep_tracks.py">import glob
+{% highlight python %}
+import glob
 import lxml
 import pykml.parser as parser
 
@@ -90,7 +91,7 @@ def prep_tracks(loc):
         ftracks.append(onetrack)
 
     return locations, fltimes, ftracks
-</pre>
+{% endhighlight %}
 
 This gives me the longitudes, latitudes, and times associated with each pair. I made it into a lazy function I can just point at a directory as well, for future experiments in multi-flight plotting that I still haven&#8217;t ironed out yet. Since [timezones are tricky and evil][9], FlightAware lets you create an account and associate a timezone for everything (including downloads!), so I just changed my time to [UTC][10] to not have to worry about that.
 

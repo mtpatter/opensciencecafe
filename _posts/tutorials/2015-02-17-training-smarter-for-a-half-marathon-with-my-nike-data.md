@@ -50,7 +50,8 @@ Anyway, glad to have some base code to help with my training.  I&#8217;ll write
 
 &nbsp;
 
-<pre class="lang:default decode:true  " title="plotting with nike+">library(RCurl)
+{% highlight r %}
+library(RCurl)
 library(rjson)
 library(plyr)
 library(scales)
@@ -61,19 +62,19 @@ library(xkcd)
 
 #--------------------------------------------------------------------------
 # INPUTS
-accTokenFnm &lt;- "accessToken.txt" # Put your api key in here
-count &lt;- 25                      # number of runs to plot
+accTokenFnm <- "accessToken.txt" # Put your api key in here
+count <- 25                      # number of runs to plot
 #--------------------------------------------------------------------------
 
-baseAddr &lt;- "https://api.nike.com/"
-header &lt;- c(Accept="application/json", "Content-Type"="application/json", appid="fuelband")
+baseAddr <- "https://api.nike.com/"
+header <- c(Accept="application/json", "Content-Type"="application/json", appid="fuelband")
 
 #--------------------------------------------------------------------------
 # Get user's access token
 #--------------------------------------------------------------------------
-getNikeAccessToken &lt;- function(fnm=accTokenFnm){
-  accessTokenFile &lt;- file(fnm, "rt", blocking=T)
-  accessToken &lt;- readLines(accessTokenFile, 1, ok=T, warn=F)
+getNikeAccessToken <- function(fnm=accTokenFnm){
+  accessTokenFile <- file(fnm, "rt", blocking=T)
+  accessToken <- readLines(accessTokenFile, 1, ok=T, warn=F)
   close(accessTokenFile)
   return(accessToken)
 }
@@ -83,26 +84,26 @@ getNikeAccessToken &lt;- function(fnm=accTokenFnm){
 # Nike returns "data" and "paging". "data" contains url param "count" runs.
 # Each run contains 9 values one of which is sublist
 #--------------------------------------------------------------------------
-listNikeRuns &lt;- function(count, accessToken){
-  address &lt;- paste(baseAddr, "me/sport/activities/", sep="")
-  num &lt;- as.character(count*10) #getting 10 times more bc weird non-runs
-  url &lt;- paste(address, "?access_token=", accessToken, "&count=", num, sep="")
-  json &lt;- getURL(url, httpheader=header)
-  data &lt;- fromJSON(json)
+listNikeRuns <- function(count, accessToken){
+  address <- paste(baseAddr, "me/sport/activities/", sep="")
+  num <- as.character(count*10) #getting 10 times more bc weird non-runs
+  url <- paste(address, "?access_token=", accessToken, "&count=", num, sep="")
+  json <- getURL(url, httpheader=header)
+  data <- fromJSON(json)
   
   # Extract only interesting data for each run (returns list of list)
-  vars &lt;- c("activityId", "startTime")
-  extracted &lt;- lapply(data$data, function(d) d[vars]) 
+  vars <- c("activityId", "startTime")
+  extracted <- lapply(data$data, function(d) d[vars]) 
   
   # Now bind into df
-  df &lt;- as.data.frame(t(sapply(extracted, function(x) rbind(x))))
-  names(df) &lt;- names(extracted[[1]])
+  df <- as.data.frame(t(sapply(extracted, function(x) rbind(x))))
+  names(df) <- names(extracted[[1]])
 
-  df &lt;- df[- grep('-', df$activityId),] # getting rid of non-run weirdness 
-  rownames(df) &lt;- NULL 
-  df$startTime &lt;- gsub("T"," ", df$startTime)
-  df$startTime &lt;- gsub("Z","", df$startTime)
-  df$startTime &lt;- as.POSIXct(strptime(df$startTime, "%Y-%m-%d %H:%M:%S"))
+  df <- df[- grep('-', df$activityId),] # getting rid of non-run weirdness 
+  rownames(df) <- NULL 
+  df$startTime <- gsub("T"," ", df$startTime)
+  df$startTime <- gsub("Z","", df$startTime)
+  df$startTime <- as.POSIXct(strptime(df$startTime, "%Y-%m-%d %H:%M:%S"))
   return(head(df,count))
 }
 
@@ -110,91 +111,92 @@ listNikeRuns &lt;- function(count, accessToken){
 # Download single run stats
 # Nike returns some overall data.
 #--------------------------------------------------------------------------
-getNikeSingleRunStat &lt;- function(activityId, accessToken){
+getNikeSingleRunStat <- function(activityId, accessToken){
   message(paste("Downloading run", activityId, "..."))
-  address &lt;- paste(baseAddr, "me/sport/activities/", sep="")
-  url &lt;- paste(address, activityId, "?access_token=", accessToken, sep="")
-  json &lt;- getURL(url, httpheader=header)
-  data &lt;- fromJSON(json)
+  address <- paste(baseAddr, "me/sport/activities/", sep="")
+  url <- paste(address, activityId, "?access_token=", accessToken, sep="")
+  json <- getURL(url, httpheader=header)
+  data <- fromJSON(json)
  
-  df &lt;- as.data.frame(data$startTime)
-  df$activityId &lt;- activityId
-  names(df) &lt;- c('startTime','activityId')
-  df$startTime &lt;- gsub("T"," ", df$startTime)
-  df$startTime &lt;- gsub("Z","", df$startTime)
-  df$startTime &lt;- as.POSIXct(strptime(df$startTime, "%Y-%m-%d %H:%M:%S"))
-  df$calories &lt;- data$metricSummary$calories
-  df$fuel &lt;- data$metricSummary$fuel
-  df$steps &lt;- data$metricSummary$steps
-  df$distancekm &lt;- data$metricSummary$distance
-  df$distancemi &lt;- df$distancekm*.621371
-  df$duration &lt;- data$metricSummary$duration
-  time &lt;- as.numeric(strsplit(df$duration,':')[[1]])
-  df$totalmins &lt;- time[1]*60 + time[2] + time[3]/60
-  df$avepace &lt;- df$totalmins/df$distancemi
-  df$avepacemph &lt;- df$distancemi /df$totalmins*60 
-  df$cadence &lt;- df$steps/df$totalmins
+  df <- as.data.frame(data$startTime)
+  df$activityId <- activityId
+  names(df) <- c('startTime','activityId')
+  df$startTime <- gsub("T"," ", df$startTime)
+  df$startTime <- gsub("Z","", df$startTime)
+  df$startTime <- as.POSIXct(strptime(df$startTime, "%Y-%m-%d %H:%M:%S"))
+  df$calories <- data$metricSummary$calories
+  df$fuel <- data$metricSummary$fuel
+  df$steps <- data$metricSummary$steps
+  df$distancekm <- data$metricSummary$distance
+  df$distancemi <- df$distancekm*.621371
+  df$duration <- data$metricSummary$duration
+  time <- as.numeric(strsplit(df$duration,':')[[1]])
+  df$totalmins <- time[1]*60 + time[2] + time[3]/60
+  df$avepace <- df$totalmins/df$distancemi
+  df$avepacemph <- df$distancemi /df$totalmins*60 
+  df$cadence <- df$steps/df$totalmins
   return(df)
 }
 
 #--------------------------------------------------------------------------
 # Get actual data and make some plots
 #--------------------------------------------------------------------------
-accessToken &lt;- getNikeAccessToken()
-runs &lt;- listNikeRuns(count, accessToken)
-myrunlist &lt;- list()
-  i &lt;- 1
+accessToken <- getNikeAccessToken()
+runs <- listNikeRuns(count, accessToken)
+myrunlist <- list()
+  i <- 1
     for (run in runs$activityId) {
-        myrunlist[[i]] &lt;- getNikeSingleRunStat(run, accessToken)
-        i &lt;- i+1 
+        myrunlist[[i]] <- getNikeSingleRunStat(run, accessToken)
+        i <- i+1 
 	  }
-runStats &lt;- Reduce(function(...)merge(...,all=T),myrunlist)
-runStats$cumMileage &lt;- cumsum(runStats$distancemi)
-runStats$weekdays &lt;- weekdays(runStats$startTime)
-runStats$runtype[runStats$weekdays=='Saturday'] &lt;- 'long' # all my Saturday runs are 'long' runs
-runStats$runtype[runStats$weekdays!='Saturday'] &lt;- 'regular'
-runStats$runtype &lt;- as.factor(runStats$runtype)
+runStats <- Reduce(function(...)merge(...,all=T),myrunlist)
+runStats$cumMileage <- cumsum(runStats$distancemi)
+runStats$weekdays <- weekdays(runStats$startTime)
+runStats$runtype[runStats$weekdays=='Saturday'] <- 'long' # all my Saturday runs are 'long' runs
+runStats$runtype[runStats$weekdays!='Saturday'] <- 'regular'
+runStats$runtype <- as.factor(runStats$runtype)
 
 # avepace vs time 
-p1 &lt;- ggplot(runStats, aes(x=startTime, y=avepace, colour=runtype)) + geom_point() +theme_xkcd() + theme(axis.line = element_line(colour = "black"))
-p1 &lt;- p1 + labs(x='Date', y='Pace (mins/mile)',title='Pace over time')
-p1 &lt;- p1 + geom_smooth(method='glm',se=TRUE)
+p1 <- ggplot(runStats, aes(x=startTime, y=avepace, colour=runtype)) + geom_point() +theme_xkcd() + theme(axis.line = element_line(colour = "black"))
+p1 <- p1 + labs(x='Date', y='Pace (mins/mile)',title='Pace over time')
+p1 <- p1 + geom_smooth(method='glm',se=TRUE)
 
 # avepace vs run distance
-p2 &lt;- ggplot(runStats, aes(x=distancemi, y=avepace)) + geom_point() +theme_xkcd()+ theme(axis.line = element_line(colour = "black"))
-p2 &lt;- p2 + labs(x='Run distance (miles)', y='Pace (mins/mile)', title='Pace vs Run Distance')
-p2 &lt;- p2 + geom_smooth(method='glm',se=TRUE)
-p2fit &lt;- glm(avepace ~ distancemi + cadence + runtype, data=runStats)
+p2 <- ggplot(runStats, aes(x=distancemi, y=avepace)) + geom_point() +theme_xkcd()+ theme(axis.line = element_line(colour = "black"))
+p2 <- p2 + labs(x='Run distance (miles)', y='Pace (mins/mile)', title='Pace vs Run Distance')
+p2 <- p2 + geom_smooth(method='glm',se=TRUE)
+p2fit <- glm(avepace ~ distancemi + cadence + runtype, data=runStats)
 # Predict pace by run distance and cadence
-p2pred &lt;- predict(p2fit, newdata= data.frame(distancemi=13.1,cadence=175, runtype='regular'))
-p2 &lt;- p2 + geom_point(aes(x=13.1,y=p2pred),color='red',shape=8)
-p2 &lt;- p2 + geom_text(aes(x=13.1,y=p2pred+.1), label=paste0(as.character(floor(p2pred)) , "'", as.character( round((round(p2pred,2)-floor(p2pred))*60),0 )))
+p2pred <- predict(p2fit, newdata= data.frame(distancemi=13.1,cadence=175, runtype='regular'))
+p2 <- p2 + geom_point(aes(x=13.1,y=p2pred),color='red',shape=8)
+p2 <- p2 + geom_text(aes(x=13.1,y=p2pred+.1), label=paste0(as.character(floor(p2pred)) , "'", as.character( round((round(p2pred,2)-floor(p2pred))*60),0 )))
 
 # avepace vs cadence
-p3 &lt;- ggplot(runStats[runStats$cadence &gt; 0,], aes(x=cadence, y=avepace)) + geom_point()+theme_xkcd()+ theme(axis.line = element_line(colour = "black"))
-p3 &lt;- p3 + labs(x='Step cadence (bpm)', y='Pace (mins/mile)', title='Pace vs Cadence')
-p3 &lt;- p3 + geom_smooth(method='glm',se=TRUE)
-p3 &lt;- p3 + stat_smooth(color='firebrick')
+p3 <- ggplot(runStats[runStats$cadence &gt; 0,], aes(x=cadence, y=avepace)) + geom_point()+theme_xkcd()+ theme(axis.line = element_line(colour = "black"))
+p3 <- p3 + labs(x='Step cadence (bpm)', y='Pace (mins/mile)', title='Pace vs Cadence')
+p3 <- p3 + geom_smooth(method='glm',se=TRUE)
+p3 <- p3 + stat_smooth(color='firebrick')
 
 # avepace vs cumulative run mileage
-p4 &lt;- ggplot(runStats, aes(x=cumMileage, y=avepace)) + geom_point() +theme_xkcd()+ theme(axis.line = element_line(colour = "black"))
-p4 &lt;- p4 + labs(x='Total mileage', y='Pace (mins/mile)', title='Pace vs Cumulative Run Mileage')
-p4 &lt;- p4 + geom_smooth(method='glm',se=TRUE)
-p4 &lt;- p4 + stat_smooth(color='firebrick')
-p4fit &lt;- glm(avepace ~ cumMileage, data=runStats)
+p4 <- ggplot(runStats, aes(x=cumMileage, y=avepace)) + geom_point() +theme_xkcd()+ theme(axis.line = element_line(colour = "black"))
+p4 <- p4 + labs(x='Total mileage', y='Pace (mins/mile)', title='Pace vs Cumulative Run Mileage')
+p4 <- p4 + geom_smooth(method='glm',se=TRUE)
+p4 <- p4 + stat_smooth(color='firebrick')
+p4fit <- glm(avepace ~ cumMileage, data=runStats)
 # Predict next week's pace by this week's expected cumulative mileage (not really good to extrapolate, but whatever)
-p4pred &lt;- predict(p4fit, newdata=data.frame(cumMileage=23+max(runStats$cumMileage)))
-p4 &lt;- p4 + geom_point(aes(x=23+max(runStats$cumMileage),y=p4pred),color='red',shape=8)
-p4 &lt;- p4 + geom_text(aes(x=23+max(runStats$cumMileage),y=p4pred+.1), label=paste0(as.character(floor(p4pred)) , "'", as.character( round((round(p4pred,2)-floor(p4pred))*60),0 )))
+p4pred <- predict(p4fit, newdata=data.frame(cumMileage=23+max(runStats$cumMileage)))
+p4 <- p4 + geom_point(aes(x=23+max(runStats$cumMileage),y=p4pred),color='red',shape=8)
+p4 <- p4 + geom_text(aes(x=23+max(runStats$cumMileage),y=p4pred+.1), label=paste0(as.character(floor(p4pred)) , "'", as.character( round((round(p4pred,2)-floor(p4pred))*60),0 )))
 
 grid.arrange(p1,p2,p3,p4, nrow=2)
-g &lt;- arrangeGrob(p1,p2,p3,p4, nrow=2)
+g <- arrangeGrob(p1,p2,p3,p4, nrow=2)
 
-</pre>
+{% endhighlight %}
 
 Also, here&#8217;s my R sessionInfo() :
 
-<pre class="lang:default decode:true " title="sessionInfo">R version 3.1.1 (2014-07-10)
+{% highlight Rconsole %}
+R version 3.1.1 (2014-07-10)
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 locale:
@@ -223,7 +225,7 @@ loaded via a namespace (and not attached):
 [16] proto_0.3-10        RColorBrewer_1.0-5  Rcpp_0.11.3        
 [19] reshape2_1.4        rpart_4.1-8         Rttf2pt1_1.3.3     
 [22] splines_3.1.1       stringr_0.6.2       survival_2.37-7    
-</pre>
+{% endhighlight %}
 
 &nbsp;
 
