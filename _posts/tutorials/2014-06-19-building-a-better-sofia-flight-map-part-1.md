@@ -39,7 +39,7 @@ SOFIA is a plane, and planes must file flight plans. When we&#8217;re in the air
 <figure>
     	<img src="{{site.url}}/images/flight-aware-screenshot.png" alt="image">
 	<figcaption>FlightAware tracking cut off towards the end of this flight, and tracking was unreliable early on as visible from the S-turns.</figcaption>
-</figured>
+</figure>
 
 Well, that looks weird. SOFIA has a long range (about 10 hrs of flight time), and when we fly out over the Pacific, tracking of the plane&#8217;s transponder isn&#8217;t always the best and the FlightAware track can get screwy as contact is acquired/lost/extrapolated. Also, the FlightAware track can be abruptly cut off before the actual landing; my best guess is that it&#8217;s related to air traffic control hand-offs but I&#8217;m not 100% sure.  To do better, I&#8217;d need a different data source.  But I was sufficently invested in the idea at this point that I knew I&#8217;d figure that out somehow, since my position within the project allows me access a plethora of flight metadata.  So it was time to figure out how to actually make it happen!
 
@@ -98,7 +98,7 @@ And so it came to pass that one day I found myself stuck in an airport waiting 
 
 Then I realized that python has a lot of libraries. Even better, the popular python plotting library [matplotlib has a lot of optional/additional toolkits][11], so I quickly found one to suit what I had stuck in my brain: [matplotlib basemap toolkit.][12]
 
-***Stay tuned for Part 2, where the real plotting/hacking/experimenting begins!***
+**Stay tuned for Part 2, where the real plotting/hacking/experimenting begins!**
 
  [1]: https://www.sofia.usra.edu/
  [2]: https://www.sofia.usra.edu/Gallery/observatory/OBS_0002.html

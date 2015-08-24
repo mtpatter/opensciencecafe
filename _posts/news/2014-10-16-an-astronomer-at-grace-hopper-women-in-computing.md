@@ -17,6 +17,7 @@ Last week, I traveled to Phoenix (along with 8,000 other women and a few men), s
 <figure>
 	<img src="{{site.url}}/images/ghc.jpg" alt="image">
 </figure>
+
 To clarify, I earned a PhD in Astronomy in 2013, realized I did not want to spend the rest of my life studying the metallicity of gas in star forming regions in galaxy outer disks, and looked towards applying my scientific background to areas of data science that have a more obvious direct impact on people.  I also love to program.  I&#8217;m currently in the Laboratory for Advanced Computing in the Center for Data Intensive Science under UChicago&#8217;s Department of Medicine.  So I went to GHC as an astronomer turned computational data science researcher doing geospatial health informatics analysis and looking to expose myself to a diverse community of researchers and women involved in computing in all areas.
 
 Getting my bearings in this new environment, there were a number of things that struck me from the perspective of a woman in astronomy and a researcher in academia.
@@ -25,9 +26,7 @@ Getting my bearings in this new environment, there were a number of things that 
 
 Was he wrong?  Yes, it is clear that women cannot rely on the current system.
 
-Was he right?  Yes, it is also clear that to ask for raises women need to be more confident in their superpowers.  <!--more-->A large part of the disparity in wages between men and women is due to the fact that 
-
-<a href="http://www.nber.org/papers/w18511" target="_blank">women are less likely to negotiate salaries, particularly when wage determination is ambiguous</a>.  So we need a system that allows wage determination to be more open and &#8216;talkable,&#8217; and women need to negotiate their salaries.  Did you know that postdocs can often negotiate their salary?  I didn&#8217;t, until I asked a male friend in the field, who told me &#8220;YES&#8221; with capital letters before I accepted my current position, thankfully.
+Was he right?  Yes, it is also clear that to ask for raises women need to be more confident in their superpowers.  <!--more-->A large part of the disparity in wages between men and women is due to the fact that <a href="http://www.nber.org/papers/w18511" target="_blank">women are less likely to negotiate salaries, particularly when wage determination is ambiguous</a>.  So we need a system that allows wage determination to be more open and &#8216;talkable,&#8217; and women need to negotiate their salaries.  Did you know that postdocs can often negotiate their salary?  I didn&#8217;t, until I asked a male friend in the field, who told me &#8220;YES&#8221; with capital letters before I accepted my current position, thankfully.
 
 Anyway, the much more impactful words to those in the room (or at least myself) were in Maria Klawe&#8217;s response to Satya.  She admitted she has never asked for a raise.  She also told us all about how she once accepted a job before her salary was determined, told the University &#8220;oh, pay me whatever,&#8221; and later realized she was probably shorted about $50,000 of what she deserved.  Her advice to everyone was this: &#8220;Do your homework.&#8221;  I walked away noting that I know I have superpowers, and I need to know my worth and do my homework.
 
@@ -43,7 +42,7 @@ I&#8217;m still working on my theme, but the projects I am most interested in ar
 
 In astronomy, people might go 4 or 5 postdocs before getting a faculty position, and many won&#8217;t ever get one.  Why is this?  I think that *the overlap in skills between industry and academia is obvious in computing.  *GHC was flooded with industry recruiters.  Do astronomers lack skills to be successful in industry?  No, quite the opposite.  Astronomy is the mother of statistics, and it is the original data-driven field- no setting up your experiment, the sky is what you get.  But where CS and computing fields are recognizing the overlap of industry and a diversity of skills very early on, graduate programs in astronomy consider a well-rounded researcher (in my experience) to have training in planetary formation to galaxies to large-scale structure of the universe.  Instead, we would benefit from formal training in computer programming, databasing, statistics, machine learning, data mining, and all of the things that come to light when stepping back and considering what is both essential to modern astronomy and also valuable to industry as skills needed in any data-driven field.
 
-**4. Lastly, always go to the conference party.  **That&#8217;s the same in astronomy and computing.  <img src="http://i0.wp.com/opensciencecafe.org/wp-includes/images/smilies/simple-smile.png?w=700" alt=":)" class="wp-smiley" style="height: 1em; max-height: 1em;" data-recalc-dims="1" />
+**4. Lastly, always go to the conference party.  **That&#8217;s the same in astronomy and computing. :)
 
  [1]: http://anitaborg.org/mentoring-resources/
  [2]: http://gracehopper.org/news/whywomencode-morethanwords/
