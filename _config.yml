@@ -5,8 +5,8 @@ description: >
   open data science
 logo: osc-round-logo.png
 search: true
-#url: http://opensciencecafe.org
-url: http://mtpatter.github.io/opensciencecafe
+url: http://opensciencecafe.org
+#url: http://mtpatter.github.io/opensciencecafe
 
 
 # Jekyll configuration
