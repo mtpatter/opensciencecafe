@@ -644,9 +644,11 @@ ssc.awaitTermination()
 
 
 
+{% endhighlight %}
+
+{% highlight python %}
 
 ssc.stop()
-
-
 sc.stop()
+
 {% endhighlight %}
