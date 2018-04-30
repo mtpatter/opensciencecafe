@@ -4,7 +4,7 @@ author: maria_patterson
 layout: post
 permalink: /2014/10/mapping-data-across-the-us/
 categories:
-  - Tutorials
+  - tutorials
 tags:
   - ggplot2
   - mapping
@@ -67,7 +67,7 @@ points <- spTransform(points, CRS(aea.proj))
 class(points)
 ## [1] "SpatialPointsDataFrame"
 ## attr(,"package")
-## [1] "sp" 
+## [1] "sp"
 {% endhighlight %}
 
 Now I have a SpatialPointsDataFrame object. Great! I’d like to plot it over a map of the US. So I’ll grab shapefile data also from the following link and unzip the contents into my working directory: <a href="http://www2.census.gov/geo/tiger/GENZ2010/gz_2010_us_050_00_5m.zip" title="http://www2.census.gov/geo/tiger/GENZ2010/gz_2010_us_050_00_5m.zip" target="_blank">http://www2.census.gov/geo/tiger/GENZ2010/gz_2010_us_050_00_5m.zip</a>
@@ -78,11 +78,11 @@ I’ll manipulate this data a little bit to plot nicely.
 ### Read in US county shapefiles
 
 all_counties <- readOGR("gz_2010_us_050_00_5m.shp", "gz_2010_us_050_00_5m")
-## OGR data source with driver: ESRI Shapefile 
+## OGR data source with driver: ESRI Shapefile
 ## Source: "gz_2010_us_050_00_5m.shp", layer: "gz_2010_us_050_00_5m"
 ## with 3221 features and 6 fields
 ## Feature type: wkbPolygon with 2 dimensions
- 
+
 ### Change projection of counties for nice plotting
 all_counties <- spTransform(all_counties, CRS(aea.proj))
 # Restrict to continental US for the moment
@@ -93,10 +93,10 @@ class(usa_counties)
 ## [1] "SpatialPolygonsDataFrame"
 ## attr(,"package")
 ## [1] "sp"
- 
+
  ### Create county borders
- county_borders <- as(usa_counties, "SpatialPolygonsDataFrame") 
- ### Create state borders by combining counties 
+ county_borders <- as(usa_counties, "SpatialPolygonsDataFrame")
+ ### Create state borders by combining counties
  library(maptools)
  library(gpclib)
  gpclibPermit()
@@ -112,7 +112,7 @@ methods(fortify)
 
 ## This plots an outline of counties.
 
-countiesPlot <- ggplot(county_borders) + geom_polygon(aes(long,lat,group=group),fill=NA,col='black') + coord_equal() 
+countiesPlot <- ggplot(county_borders) + geom_polygon(aes(long,lat,group=group),fill=NA,col='black') + coord_equal()
  plot(countiesPlot)
 {% endhighlight %}
 
@@ -161,20 +161,20 @@ And that’s how you overlay a map of data values with latitude and longitude co
 {% highlight r %}
 ## R version 3.1.1 (2014-07-10)
 ## Platform: x86_64-pc-linux-gnu (64-bit)
-## 
+##
 ## locale:
 ##  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
 ##  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
 ##  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
 ##  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
 ##  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-## 
+##
 ## attached base packages:
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
-## 
+##
 ## other attached packages:
 ## [1] sp_1.0-15     ggplot2_1.0.0
-## 
+##
 ## loaded via a namespace (and not attached):
 ##  [1] colorspace_1.2-4 digest_0.6.4     evaluate_0.5.5   formatR_1.0     
 ##  [5] grid_3.1.1       gtable_0.1.2     htmltools_0.2.6  knitr_1.6       
@@ -182,4 +182,3 @@ And that’s how you overlay a map of data values with latitude and longitude co
 ## [13] plyr_1.8.1       proto_0.3-10     Rcpp_0.11.3      reshape2_1.4    
 ## [17] rmarkdown_0.3.3  scales_0.2.4     stringr_0.6.2    tools_3.1.1
 {% endhighlight %}
-

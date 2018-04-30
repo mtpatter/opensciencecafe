@@ -4,7 +4,7 @@ author: maria_patterson
 layout: post
 permalink: /2015/02/training-smarter-for-a-half-marathon-with-my-nike-data/
 categories:
-  - Tutorials
+  - tutorials
 tags:
   - ggplot2
   - quantified self
@@ -16,7 +16,7 @@ tags:
 ---
 <figure>
 	<img src="{{site.url}}/images/p1.png" alt="image">
-</figure>	
+</figure>
 I&#8217;ve started to train for a half marathon, just finishing week 5 of the 12 week Nike+ running coach half marathon program. I just want to know- how quickly can I expect to improve my running pace?  I&#8217;m NOT a runner, and I&#8217;m very slow. By &#8220;not a runner&#8221;, I mean I had never run more than 4 miles at once before this program and not a single mile at all in the last two years.  By &#8220;slow&#8221;, I mean that I am a 5&#8217;2&#8243; girl who has a hard time keeping up with people I walk next to.  To clarify further, because I recently read a comment somewhere on the interwebs about someone who was &#8220;slow&#8221; with a &#8220;sluggish pace&#8221; of 9&#8217;45&#8221; (HA, that&#8217;s my fastest mile!), I&#8217;ll just let you also know that my all time average pace with Nike+ Running app so far is 13&#8217;12&#8221;.
 
 Anyway, I&#8217;ve spent a lot of time researching (read: googling constantly) how to go from basically no running to running a half marathon in just 12 weeks, and the interwebs have left me unsatisfied.  I have zero desire to be a real distance runner (running a marathon sounds insane to me), and I have zero desire to be a fast runner and hate sprinting.  I would just like to finish the half marathon in a time that is appropriate for my age/gender/capabilities.
@@ -90,17 +90,17 @@ listNikeRuns <- function(count, accessToken){
   url <- paste(address, "?access_token=", accessToken, "&count=", num, sep="")
   json <- getURL(url, httpheader=header)
   data <- fromJSON(json)
-  
+
   # Extract only interesting data for each run (returns list of list)
   vars <- c("activityId", "startTime")
-  extracted <- lapply(data$data, function(d) d[vars]) 
-  
+  extracted <- lapply(data$data, function(d) d[vars])
+
   # Now bind into df
   df <- as.data.frame(t(sapply(extracted, function(x) rbind(x))))
   names(df) <- names(extracted[[1]])
 
-  df <- df[- grep('-', df$activityId),] # getting rid of non-run weirdness 
-  rownames(df) <- NULL 
+  df <- df[- grep('-', df$activityId),] # getting rid of non-run weirdness
+  rownames(df) <- NULL
   df$startTime <- gsub("T"," ", df$startTime)
   df$startTime <- gsub("Z","", df$startTime)
   df$startTime <- as.POSIXct(strptime(df$startTime, "%Y-%m-%d %H:%M:%S"))
@@ -117,7 +117,7 @@ getNikeSingleRunStat <- function(activityId, accessToken){
   url <- paste(address, activityId, "?access_token=", accessToken, sep="")
   json <- getURL(url, httpheader=header)
   data <- fromJSON(json)
- 
+
   df <- as.data.frame(data$startTime)
   df$activityId <- activityId
   names(df) <- c('startTime','activityId')
@@ -133,7 +133,7 @@ getNikeSingleRunStat <- function(activityId, accessToken){
   time <- as.numeric(strsplit(df$duration,':')[[1]])
   df$totalmins <- time[1]*60 + time[2] + time[3]/60
   df$avepace <- df$totalmins/df$distancemi
-  df$avepacemph <- df$distancemi /df$totalmins*60 
+  df$avepacemph <- df$distancemi /df$totalmins*60
   df$cadence <- df$steps/df$totalmins
   return(df)
 }
@@ -147,7 +147,7 @@ myrunlist <- list()
   i <- 1
     for (run in runs$activityId) {
         myrunlist[[i]] <- getNikeSingleRunStat(run, accessToken)
-        i <- i+1 
+        i <- i+1
 	  }
 runStats <- Reduce(function(...)merge(...,all=T),myrunlist)
 runStats$cumMileage <- cumsum(runStats$distancemi)
@@ -156,7 +156,7 @@ runStats$runtype[runStats$weekdays=='Saturday'] <- 'long' # all my Saturday runs
 runStats$runtype[runStats$weekdays!='Saturday'] <- 'regular'
 runStats$runtype <- as.factor(runStats$runtype)
 
-# avepace vs time 
+# avepace vs time
 p1 <- ggplot(runStats, aes(x=startTime, y=avepace, colour=runtype)) + geom_point() +theme_xkcd() + theme(axis.line = element_line(colour = "black"))
 p1 <- p1 + labs(x='Date', y='Pace (mins/mile)',title='Pace over time')
 p1 <- p1 + geom_smooth(method='glm',se=TRUE)
@@ -212,7 +212,7 @@ attached base packages:
 [8] base     
 
 other attached packages:
-[1] scales_0.2.4    plyr_1.8.1      rjson_0.2.15    RCurl_1.95-4.5 
+[1] scales_0.2.4    plyr_1.8.1      rjson_0.2.15    RCurl_1.95-4.5
 [5] bitops_1.0-6    xkcd_0.0.4      extrafont_0.17  gridExtra_0.9.1
 [9] ggplot2_1.0.0  
 

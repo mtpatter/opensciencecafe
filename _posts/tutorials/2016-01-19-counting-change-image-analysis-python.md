@@ -4,7 +4,7 @@ author: maria_patterson
 layout: post
 permalink: /2016/01/counting-change-image-analysis-python/
 categories:
-  - Tutorials
+  - tutorials
 tags:
   - python
   - reproducible
@@ -18,20 +18,20 @@ tags:
         <img src="{{site.url}}/images/coins_9_2.png" alt="image">
 </figure>
 One of the nice perks about working at a University is the opportunity to go to a wide variety
-of all kinds of classes and workshops. I 
+of all kinds of classes and workshops. I
 just went to a really great workshop about Image Analysis in Python, given
 by Brian Keating, a UChicago RCC staff member. The materials for the class are on the lecturer's Github:
 
 [https://github.com/brikeats/Image-Analysis-in-Python](https://github.com/brikeats/Image-Analysis-in-Python).
 
 The post below is the code I wrote to count change in a picture Brian provided as a hands-on
-exercise.  Please note that a blank copy of the guided steps (marked here in bold/italics), 
-as well as another sample solution, are 
-independently and originally available from 
-Brian's course materials- I'm just wanting to share here the code I filled in 
-for each step (and heavily cribbed from the intro workshop materials). 
+exercise.  Please note that a blank copy of the guided steps (marked here in bold/italics),
+as well as another sample solution, are
+independently and originally available from
+Brian's course materials- I'm just wanting to share here the code I filled in
+for each step (and heavily cribbed from the intro workshop materials).
 
-This is the initial picture for analysis, containing only quarters, dimes and pennies (no nickels). 
+This is the initial picture for analysis, containing only quarters, dimes and pennies (no nickels).
 
 <img src='{{site.url}}/images/quarters_dimes_pennies.png'>
 
@@ -73,7 +73,7 @@ my_imshow(gray_im)
 
 
 
-**Step 2: Thresholding.** *Create a binary mask by thresholding the grayscale image. 
+**Step 2: Thresholding.** *Create a binary mask by thresholding the grayscale image.
 You can use a histogram and some guesswork to determine the threshold or use one of the threshold functions in `skimage.filters`.*  I'm using Ostu's method.
 
 {% highlight python %}
@@ -111,7 +111,7 @@ from skimage.morphology import disk
 
 no_small = morphology.remove_small_objects(thresholded, min_size=150)
 
-coins = morphology.binary_closing(no_small,disk(3)) 
+coins = morphology.binary_closing(no_small,disk(3))
 plt.figure()
 plt.imshow(coins, cmap='gray', interpolation='none')
 plt.title('closed coins with small objects removed')
@@ -125,7 +125,7 @@ plt.axis('off')
 
 
 
-**Step 4: Masking.** *It will be convenient to set the background to black. Use the coin mask that you created to set the backgrounds of both the original color image, and the grayscale image to zero. 
+**Step 4: Masking.** *It will be convenient to set the background to black. Use the coin mask that you created to set the backgrounds of both the original color image, and the grayscale image to zero.
 You should be able to see the coins in color, but the counter (and the reflections in the counter) should be black. While you're at it, set the background of the grayscale image to zero as well. From now on, we don't have to worry about the background affecting our results because we've masked it out.*
 
 {% highlight python %}
@@ -156,8 +156,8 @@ plt.axis('off')
 
 
 
-**Step 5: Watershed Segmentation** *Now that we've segmented the foreground from the background, we want to distinguish the coins from each other. 
- Use the watershed-based segmentation that was introduced in the cell counting demo to create a label image for the coins. Print the number of coins in the image.* 
+**Step 5: Watershed Segmentation** *Now that we've segmented the foreground from the background, we want to distinguish the coins from each other.
+ Use the watershed-based segmentation that was introduced in the cell counting demo to create a label image for the coins. Print the number of coins in the image.*
 
 
 {% highlight python %}
@@ -183,7 +183,7 @@ plt.figure()
 imshow_overlay(distance_im, peaks_im, alpha=1, cmap='gray')
 
 markers_im = measure.label(peaks_im)
-labelled_coins = morphology.watershed(-distance_im, markers_im, mask=coins) 
+labelled_coins = morphology.watershed(-distance_im, markers_im, mask=coins)
 num_coins = len(np.unique(labelled_coins))-1  # subtract 1 b/c background is labelled 0
 print 'number of coins: %i' % num_coins
 
@@ -269,5 +269,3 @@ So $4.08 in the image!  Looks about right.  The thresholding on coin sizes at th
 improved by perhaps either using colors of the coins or by doing some sort of clustering algorithm
 on the regions, knowing that there are only 3 types of coins.  Good start anyway and a really great
 hands-on workshop exercise.
-
-

@@ -11,7 +11,7 @@ blogger_author:
 blogger_internal:
   - /feeds/4418006583724827616/posts/default/2089281204156798590
 categories:
-  - Tutorials
+  - tutorials
 tags:
   - cross-discipline
   - mapping
