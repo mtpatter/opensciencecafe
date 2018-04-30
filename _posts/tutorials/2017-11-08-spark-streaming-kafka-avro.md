@@ -14,7 +14,9 @@ tags:
   - spark
 
 ---
-Here I show an example of using Spark Streaming to process Avro formatted data from Kafka.
+
+I'll show here an example of using Spark Streaming to process Avro
+formatted data from Kafka.
 
 The notebooks for the code below and a Docker image are available here:
 
