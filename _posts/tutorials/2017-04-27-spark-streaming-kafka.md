@@ -10,6 +10,7 @@ tags:
   - reproducible
   - streaming
   - kafka
+  - spark
 
 ---
 
